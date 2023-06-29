@@ -24,6 +24,7 @@ public partial class Example07Context : DbContext
     public virtual DbSet<PostComment> PostComments { get; set; }
     public virtual DbSet<PostTag> PostTags { get; set; }
     public virtual DbSet<Product> Products { get; set; }
+    public virtual DbSet<Deal> Deals { get; set; }
     public virtual DbSet<ProductReview> ProductReviews { get; set; }
     public virtual DbSet<Setting> Settings { get; set; }
     public virtual DbSet<Shipping> Shippings { get; set; }
@@ -197,6 +198,11 @@ public partial class Example07Context : DbContext
         .HasColumnType("decimal(20, 2)")
         .HasColumnName("value");
     });
+        modelBuilder.Entity<Deal>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK_deals_id");
+            entity.ToTable("Deals");
+        });
         modelBuilder.Entity<FailedJob>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK_failed_jobs_id");
